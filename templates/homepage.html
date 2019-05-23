@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pokedex</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/homepage.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1 class="search-title">Search a pokemon by name</h1>
+		<form action="search">
+			<input id="search" class="search" type="text" name="name">
+			<input class="input-button" type="submit" name="submit">
+		</form>
+		<div class="pokedex">
+			<div class="poke-name">				
+			</div>
+			<div class="poke-image">
+				<img src="">
+			</div>
+			<div class="poke-info">
+				<div class="poke-summary">
+					<span class="poke-text"></span>
+				</div>
+				<div class="poke-stats">
+					<div class="poke-stats2">
+						<h2 class="stats2-title">Height</h2>
+						<span class="poke-height"></span>
+						<h2 class="stats2-title">Weight</h2>
+						<span class="poke-weight"></span>
+					</div>
+					<div class="poke-stats2">
+						<h2 class="stats2-title">Type</h2>
+						<span class="poke-species"></span>
+						<h2 class="stats2-title">Moves</h2>
+						<span class="poke-moves"></span>
+					</div>
+					<div class="poke-stats2">
+						<h2 class="stats2-title">Abilities</h2>
+						<span class="abilities"></span>
+						<h2 class="stats2-title">Habitat</h2>
+						<span class="habitat"></span>
+					</div>
+				</div>
+			</div>	
+			<div class="poke-info2">
+				<h2>Evolve from:</h2>
+				<span class="evolve"></span>	
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('form').submit(function(event){
+				event.preventDefault();
+				var userInput = $('#search').val();
+				$.get('https://pokeapi.co/api/v2/pokemon/' + userInput + '/', function(pokemon){
+					console.log(pokemon);
+					$('div.poke-name').html("<h2 class='title'>" + pokemon.name + "</h2>");
+					var list = [];
+					for (var i = 0; i < 2; i++) {
+						 var ability = pokemon.abilities[i].ability.name;
+						 list.push(ability);
+						$('span.abilities').html("<p>" + list + "</p>");
+					}
+					var list =[];
+					var array = pokemon.moves
+					for (var m = 0; m < array.length; m++){
+						var move = pokemon.moves[m].move.name;
+						list.push(move);
+						if(m == 3){
+							break;
+						}
+						$('span.poke-moves').html("<p>" + list + "</p>");
+						console.log("Move:" + " " +  list);
+					}
+					$.get(pokemon.species.url, function(data){
+						var array = data.flavor_text_entries;
+						for(var t = 0; t < array.length; t++){
+							console.log(data.flavor_text_entries[t])
+							if(data.flavor_text_entries[t].language.name == "en"){
+								$('span.poke-text').html("<p class='summary'>" + data.flavor_text_entries[1].flavor_text + "</p>");
+							}
+						}
+					})
+					$.get(pokemon.species.url, function(data){
+						var species = data.egg_groups
+						var list = [];
+						species.forEach(function(object){
+							var name = object.name;
+							list.push(name);
+							$('span.poke-species').html("<p>" + list + "</p>");
+							console.log("type:" + " " + object.name);
+						})
+					})
+					$.get(pokemon.species.url, function(data){
+						$('span.habitat').html("<p>" + data.habitat.name + "</p>" );
+					})
+					$('span.poke-height').html("<p>" + pokemon.height + "m" + "</p>");
+					$('span.poke-weight').html("<p>" + pokemon.weight + "kgs" + "</p>");
+					$('div.poke-image').html("<img src=" + pokemon.sprites.front_default + ">");
+
+					$.get(pokemon.species.url, function(data){
+						console.log(data);
+						if(data.evolves_from_species == null){
+							$('span.evolve').html("<p>" + "None" + "</p>")
+						}
+						else {
+							var evolve_form = data.evolves_from_species.name;
+							$('span.evolve').html("<p>" + evolve_form + "</p>")
+						}
+					})
+				}, "JSON")
+			})
+		})
+	</script>
+</body>
+</html>

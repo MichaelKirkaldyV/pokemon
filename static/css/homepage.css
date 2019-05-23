@@ -1,0 +1,201 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+@font-face {
+  font-family: 'spantaran';
+  src: url('../fonts/Spantaran.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+	background-color: black;
+	height: 100%;
+	width: 100%;
+	padding: 30px;
+}
+
+.search-title {
+	font-family: 'spantaran', sans-serif;
+
+}
+
+h1 {
+	color: white;
+	margin-left: 100px;
+}
+
+.pokedex {
+	height: 695px;
+	width: 905px;
+	background-color: red;
+	border-radius: 10px;
+	background-image: linear-gradient(to bottom right, red, yellow);
+	padding: 20px;
+}
+
+form {
+	margin-bottom: 40px;
+	margin-left: 100px;
+}
+
+input {
+	margin-top: 15px;
+}
+
+input.search {
+	height: 30px;
+	width: 250px;
+}
+
+input.input-button {
+	height: 33px;
+	width: 120px;
+	background-color: green;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+}
+
+.poke-info {
+	display: inline-block;
+}
+
+.poke-name {
+	height: 55px;
+	width: 100%;
+	background-color: gray;
+	border-radius: 10px;
+	padding-top: 15px;
+}
+
+.poke-image {
+	background-color: white;
+	height: 483px;
+	width: 300px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 20px;
+	border-radius: 10px;
+
+}
+
+.poke-summary {
+	background-color: white;
+	height: 200px;
+	width: 532px;
+	margin-left: 20px;
+	display: inline-block;
+	margin-top: 20px;
+	border-radius: 10px;
+
+}
+
+.poke-stats {
+	background-color: #30a7d7;
+	height: 230px;
+	width: 575px;
+	border-radius: 10px;
+	display: flex;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+h2 {
+	margin-left: 30px;
+}
+
+h2.title {
+	display: inline-block;
+}
+
+.poke-stats2 {
+	height: 200px;
+	width: 200px;
+	margin-right: 35px;
+}
+
+.poke-info2 {
+	background-color: white;
+	border-radius: 10px;
+	height: 100px;
+	width: 900px;
+	margin-top: 15px;
+}
+
+.poke-evo {
+	background-color: gray;
+	border-radius: 10px;
+	height: 260px;
+	width: 900px;
+	margin-top: 15px;
+}
+
+.stats2-title {
+	font-family: 'spantaran', sans-serif;
+	margin-top: 20px;
+}
+
+.poke-info2 h2 {
+	display: inline-block;
+	margin-top: 35px;
+	font-family: 'spantaran', sans-serif;
+	font-size: 30px;
+}
+
+.evolve p {
+	margin-top: 35px;
+	font-size: 25px;
+	display: inline-block;
+	margin: 0;
+	margin-left: 15px;
+}
+
+.summary {
+	margin-top: 25px;
+	margin-left: 25px;
+	font-size: 22px;
+}
+/*----------------------------JQUERY---------------------------------*/
+
+h2.title {
+	color: white;
+	font-size: 35px;
+	font-family: 'spantaran', sans-serif;
+	letter-spacing: 5px;
+}
+
+img {
+	height: 300px;
+	width: 246px;
+	padding: 20px;
+	margin-top: 20px;
+
+}
+
+span.poke-text{
+	font-size: 20px;
+	font-family: 'spantaran', sans-serif;
+
+}
+
+.poke-summary {
+	padding: 20px;
+}
+
+span {
+	height: 50px;
+	width: 50px;
+	background-color: white;
+}
+
+p {
+	margin-left: 50px;
+	font-size: 20px;
+	font-family: 'spantaran', sans-serif;
+}
+
+
