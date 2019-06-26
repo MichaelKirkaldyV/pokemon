@@ -5,5 +5,3 @@ app = Flask(__name__)
 def homepage(): 
 	return render_template('homepage.html')
 	
-
-app.run(debug=False)  
